@@ -1,5 +1,5 @@
 ***Settings***
-Library     src/jiraissueopener.py    myuser   mypassword  https://127.0.0.1/rest/api/2/issue/     projectid
+Library     ../src/jiraissueopener.py    myuser   mypassword  https://127.0.0.1/rest/api/2/issue/     projectid
 
 ***Test Cases***
 passed Test
