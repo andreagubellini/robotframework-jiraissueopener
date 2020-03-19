@@ -1,7 +1,7 @@
 ***Settings***
-***Keywords***
-${jira_user}    agubellini
-${jira_password}    !9v834nd1235989SwostepS!
+***Variables***
+${jira_user}    myuser
+${jira_password}    mypassword
 
 ***Test Cases***
 passed Test
