@@ -59,10 +59,6 @@ class jiraissueopener(object):
             request = requests.post(self.project, data=json.dumps(data), headers=headers, auth=HTTPBasicAuth(self.user, self.password))
             content = dict(request.json())
             jira_issue = content["key"]
-<<<<<<< HEAD
-=======
-            LOGGER.log_message(Message('Opened issue ' + jira_issue , 'INFO'))
->>>>>>> 0ce648c53c6d5d782b3d3d1ebc968b8abf0014f2
             self.jira_issues_list.append(jira_issue)
         except Exception as e:
             print(e)
