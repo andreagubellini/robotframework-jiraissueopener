@@ -4,9 +4,6 @@ import requests
 from requests.auth import HTTPBasicAuth
 import json
 
-class Error(RuntimeError):
-    ROBOT_CONTINUE_ON_FAILURE = True
-
 class jiraissueopener(object):
     """
     = Table of contents =
@@ -20,9 +17,10 @@ class jiraissueopener(object):
     With the following library, we can set specific tests to open a jira issue when *failed*.
     Each issue may have a specific type, be opened on a specific project and assigned to a specific user.
     """
-    ROBOT_LIBRARY_SCOPE = 'TEST CASE'
-
-    def __init__(self, user=None, password=None, project_url=None, project_id=None):
+    
+    ROBOT_LISTENER_API_VERSION = 3
+    def __init__(self, project_url=None, project_id=None, assignee=None, issue_type=None):
+        
         """
         *user* = Jira username
 
@@ -34,46 +32,57 @@ class jiraissueopener(object):
 
         *Import example* = ``Library    jiraissueopener   myuser   mypassword   https://127.0.0.1/rest/api/2/issue/   10800``
         """
-        self.user = user
-        self.password = password
         self.project = project_url
         self.project_id = project_id
-
-    @keyword('Open Jira Issue')
-    def open_jira_issue(self, issue_id, assignee):
-        """Opens a jira issue.
+        self.jira_issues_list = []
+        self.assignee = assignee
+        self.issue_type = issue_type
         
-        The issue can be assigned automatically to a specific assignee by passing the username of the assignee. Example: agubellini.
 
-        The issue may be opened as a specific type by passing the issue id to "issue_id" parameter. Example: 10100
-        """
-        self.test_message = BuiltIn().get_variable_value("${TEST_MESSAGE}")
-        self.test_status = BuiltIn().get_variable_value("${TEST_STATUS}")
-        self.test_doc = BuiltIn().get_variable_value("${TEST_DOCUMENTATION}")
-        self.test_name = BuiltIn().get_variable_value("${TEST_NAME}")
+    def end_test(self, data, result):
         self.suite_name = BuiltIn().get_variable_value("${SUITE_NAME}")
-        self.issue = issue_id
-        if self.test_status == "FAIL":
+        self.log_files = BuiltIn().get_variable_value("${LOG_FILE}")
+        self.user = BuiltIn().get_variable_value("${jira_user}")
+        self.password = BuiltIn().get_variable_value("${jira_password}")
+        if result.status != "PASS":
             payload = {
                     "fields":{
                                 "project":  { "id": self.project_id },
-                                "summary": "Suite: " + self.suite_name + " Test: " + self.test_name,
-                                "description": "Error: " + self.test_message + " " + "\nTest Documentation: " + self.test_doc,
-                                "assignee": {"name": assignee },
-                                "issuetype":    { "id": self.issue }
+                                "summary": self.suite_name + ": " + result.name + " has failed",
+                                "description": "Error message:\n" + result.message + "\nDocumentation: \n" + result.doc,
+                                "assignee": {"name": self.assignee },
+                                "issuetype":    { "id": self.issue_type }
                             }
                 }
             self._send_request(payload)
-        else:
-            print("Tests Passed")
+
+    def log_file(self, log_file):
+        file = log_file.path
+        self._upload_log_files(file)
+        
+
+    def _upload_log_files(self, file):
+        headers = {"X-Atlassian-Token": "nocheck"}
+        for i in self.jira_issues_list:
+            attachments = {'file': open(self.file, 'rb')}
+            try:
+                upload_files = requests.post(self.project+i+"/attachments", files=attachments, headers=headers, auth=HTTPBasicAuth(self.user, self.password))
+                print(upload_files.content)
+            except Exception as e:
+                print(e)
 
     def _send_request(self, data):
         headers = {"Content-type": "application/json" }
         try:
             request = requests.post(self.project, data=json.dumps(data), headers=headers, auth=HTTPBasicAuth(self.user, self.password))
-            print(request.content)
+            print(request)
+            content = dict(request.json())
+            jira_issue = content["key"]
+            print(jira_issue)
+            self.jira_issues_list.append(jira_issue)
         except Exception as e:
             print(e)
-   
 
-#
+            
+       
+
