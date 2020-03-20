@@ -12,7 +12,7 @@ setuptools.setup(
     long_description=[],
     long_description_content_type="text/markdown",
     url="https://github.com/andreagubellini/robotframework-jiraissueopener",
-    packages=["src"],
+    packages=['src'],
     install_requires=['robotframework>=3.0', 'requests>=2.20.0'],
     classifiers=[
         "Programming Language :: Python :: 3",
