@@ -1,6 +1,6 @@
 # robotframework-jiraissueopener
 
-![Upload Python Package](https://github.com/andreagubellini/robotframework-jiraissueopener/workflows/Upload%20Python%20Package/badge.svg?branch=master) [![![PyPI download month](https://img.shields.io/pypi/dm/ansicolortags.svg)](https://pypi.org/project/robotframework-jiraissueopener/)
+![Upload Python Package](https://github.com/andreagubellini/robotframework-jiraissueopener/workflows/Upload%20Python%20Package/badge.svg?branch=master) 
  [![PyPI version fury.io](https://badge.fury.io/py/ansicolortags.svg)](https://pypi.org/project/robotframework-jiraissueopener/)
 
 
