@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="robotframework-jiraissueopener",
-    version="0.0.2.1",
+    version="0.0.2.2",
     author="Andrea Gubellini",
     author_email="agubellini@yahoo.com",
     description="An automatic Jira issue opener for Robotframework",
