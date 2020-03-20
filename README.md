@@ -55,7 +55,7 @@ The listener arguments are:
 ## Example
 The following is an example based on the dummy data used in **Usage**
 
-`robot --listener "robotframework-jiraissueopener;https://jira.myserver.com/rest/api/2/issue/;11805;agubellini;10100" mytests.robot`
+`robot --listener "jiraissueopener;https://jira.myserver.com/rest/api/2/issue/;11805;agubellini;10100" mytests.robot`
 
 ## Contributing
 Pull requests are welcome. Please open an issue first to discuss what you would like to change.
