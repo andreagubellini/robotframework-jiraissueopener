@@ -22,7 +22,6 @@ class jiraissueopener(object):
 
     def end_test(self, data, result):
         self.suite_name = BuiltIn().get_variable_value("${SUITE_NAME}")
-        self.log_files = BuiltIn().get_variable_value("${LOG_FILE}")
         self.user = BuiltIn().get_variable_value("${jira_user}")
         self.password = BuiltIn().get_variable_value("${jira_password}")
         if result.status != "PASS":
@@ -39,7 +38,6 @@ class jiraissueopener(object):
 
     def log_file(self, path):
         file = path
-        print(file)
         self._upload_log_files(file)
  
 
