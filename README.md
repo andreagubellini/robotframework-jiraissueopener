@@ -1,6 +1,8 @@
 # robotframework-jiraissueopener
 
-![Upload Python Package](https://github.com/andreagubellini/robotframework-jiraissueopener/workflows/Upload%20Python%20Package/badge.svg?branch=master)
+![Upload Python Package](https://github.com/andreagubellini/robotframework-jiraissueopener/workflows/Upload%20Python%20Package/badge.svg?branch=master) [![PyPI downloads](https://img.shields.io/pypi/dt/ansicolortags.svg)](https://pypi.org/project/robotframework-jiraissueopener/) [![PyPI version fury.io](https://badge.fury.io/py/ansicolortags.svg)](https://pypi.org/project/robotframework-jiraissueopener/)
+
+
 
 With the following listener a user can automatically create Jira issues when tests fail. Each failed test will have an individual Jira issue for which 
     assignee, project id and issue type may be modified.
