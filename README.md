@@ -1,6 +1,6 @@
 # robotframework-jiraissueopener
 
-![Build](https://github.com/andreagubellini/robotframework-jiraissueopener/workflows/Upload%20Python%20Package/badge.svg?branch=master)[![Downloads](https://pepy.tech/badge/robotframework-jiraissueopener)](https://pepy.tech/project/robotframework-jiraissueopener) [![Downloads](https://pepy.tech/badge/robotframework-jiraissueopener/month)](https://pepy.tech/project/robotframework-jiraissueopener/month)![PyPI](https://img.shields.io/pypi/v/robotframework-jiraissueopener?color=light%20green)
+![Build](https://github.com/andreagubellini/robotframework-jiraissueopener/workflows/Upload%20Python%20Package/badge.svg?branch=master) [![Downloads](https://pepy.tech/badge/robotframework-jiraissueopener)](https://pepy.tech/project/robotframework-jiraissueopener) [![Downloads](https://pepy.tech/badge/robotframework-jiraissueopener/month)](https://pepy.tech/project/robotframework-jiraissueopener/month) ![PyPI](https://img.shields.io/pypi/v/robotframework-jiraissueopener?color=light%20green)
 
 
 
