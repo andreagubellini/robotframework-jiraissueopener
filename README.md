@@ -35,29 +35,31 @@ pip install robotframework-jiraissueopener
 NB: above dependencies are installed automatically when using pip to retrieve `robotframework-jiraissueopener`
 
 ## Usage
-Executed `.robot` file must have two variables called `${jira_user}` and `${jira_password}`.
+Executed `.robot` file must expose mandatory variables such as:
+
+* ${JIRA_PROJECT}  Jira server api /issue/ url
+* ${JIRA_PROJECT_ID}  your project id. Retrievable from project settings. Example: *11805*
+* ${JIRA_ASSIGNEE}  assignee's username. Example: *agubellini*
+* ${JIRA_ISSUE_TYPE}  `issue_type`: can be found on your jira settings. ([How-to](https://confluence.atlassian.com/jirakb/finding-the-id-for-issue-types-646186508.html)) Example: *10100* 
 
 Example:
 ```
 ***Variables***
-${jira_user}   myuser
-${jira_password}   mypassword
+${JIRA_PROJECT}     https://jira.myserver.com/rest/api/2/issue/
+${JIRA_PROJECT_ID}  11888
+${JIRA_ASSIGNEE}    agubellini
+${JIRA_ISSUE_TYPE}  10100
 ```
 
 The listener arguments are:
 
-`project_url`: your jira server url. Working example: *https://jira.myserver.com/rest/api/2/issue/*
-
-`project_id`: your project id. Retrievable from project settings. Example: *11805*
-
-`assignee`: assignee's username. Example: *agubellini*
-
-`issue_type`: can be found on your jira settings. ([How-to](https://confluence.atlassian.com/jirakb/finding-the-id-for-issue-types-646186508.html)) Example: *10100* 
+`username`: your jira username
+`password`: your jira password
 
 ## Example
 The following is an example based on the dummy data used in **Usage**
 
-`robot --listener "jiraissueopener;https://jira.myserver.com/rest/api/2/issue/;11805;agubellini;10100" mytests.robot`
+`robot --listener "jiraissueopener;testusername;mycoolpassword" mytests.robot`
 
 ## Contributing
 Pull requests are welcome. Please open an issue first to discuss what you would like to change.
