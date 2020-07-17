@@ -1,6 +1,8 @@
 ***Variables***
-${jira_password}    mypassword
-${jira_user}    myuser
+${JIRA_PROJECT}     https://jira.myserver.com/rest/api/2/issue/
+${JIRA_PROJECT_ID}  11888
+${JIRA_ASSIGNEE}    agubellini
+${JIRA_ISSUE_TYPE}  10100
 
 ***Test Cases***
 Failed test Case
