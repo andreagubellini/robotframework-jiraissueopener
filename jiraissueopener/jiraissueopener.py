@@ -12,18 +12,18 @@ class jiraissueopener(object):
     assignee, project id and issue type may be modified.
     """
     ROBOT_LISTENER_API_VERSION = 3
-    def __init__(self, project_url=None, project_id=None, assignee=None, issue_type=None):
-        self.project = project_url
-        self.project_id = project_id
+    def __init__(self, user, password):
         self.jira_issues_list = []
-        self.assignee = assignee
-        self.issue_type = issue_type
+        self.user = user
+        self.password = password
         
 
     def end_test(self, data, result):
         self.suite_name = BuiltIn().get_variable_value("${SUITE_NAME}")
-        self.user = BuiltIn().get_variable_value("${jira_user}")
-        self.password = BuiltIn().get_variable_value("${jira_password}")
+        self.project = BuiltIn().get_variable_value("${JIRA_PROJECT}")
+        self.project_id = BuiltIn().get_variable_value("${JIRA_PROJECT_ID}")
+        self.assignee = BuiltIn().get_variable_value("${JIRA_ASSIGNEE}")
+        self.issue_type = BuiltIn().get_variable_value("${JIRA_ISSUE_TYPE}")
         if result.status != "PASS":
             payload = {
                     "fields":{
