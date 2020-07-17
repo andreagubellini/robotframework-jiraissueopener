@@ -18,7 +18,7 @@ The issue will report:
      Error message: test_message
      Documentation: test_documentation
 
-**Assignee**: assignee can be set as listener argument
+**Assignee**: assignee can be set as variable value
 
 ## Log files
 Current execution `log.html` file is attached to all opened issues.
