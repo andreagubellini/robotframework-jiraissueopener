@@ -45,6 +45,7 @@ Example:
 ${JIRA_PROJECT}     https://jira.myserver.com/rest/api/2/issue/
 ${JIRA_PROJECT_ID}  11888
 ${JIRA_ISSUE_TYPE}  10100
+${JIRA_ISSUE_KEY}   TEST
 ```
 
 The listener arguments are:
