@@ -1,7 +1,8 @@
 ***Variables***
 ${JIRA_PROJECT}     https://placeholder.atlassian.net/rest/api/2/issue/
-${JIRA_PROJECT_ID}  12023
-${JIRA_ISSUE_TYPE}  10610
+${JIRA_PROJECT_ID}  10000
+${JIRA_ISSUE_TYPE}  10001
+${JIRA_PROJECT_KEY}  TEST
 
 ***Test Cases***
 Failed test Case
