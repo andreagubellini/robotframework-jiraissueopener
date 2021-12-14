@@ -1,8 +1,7 @@
 ***Variables***
-${JIRA_PROJECT}     https://jira.myserver.com/rest/api/2/issue/
-${JIRA_PROJECT_ID}  11888
-${JIRA_ASSIGNEE}    agubellini
-${JIRA_ISSUE_TYPE}  10100
+${JIRA_PROJECT}     https://placeholder.atlassian.net/rest/api/2/issue/
+${JIRA_PROJECT_ID}  12023
+${JIRA_ISSUE_TYPE}  10610
 
 ***Test Cases***
 Failed test Case
