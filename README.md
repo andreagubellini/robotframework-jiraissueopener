@@ -2,8 +2,6 @@
 
 ![Build](https://github.com/andreagubellini/robotframework-jiraissueopener/workflows/Upload%20Python%20Package/badge.svg?branch=master) [![Downloads](https://pepy.tech/badge/robotframework-jiraissueopener)](https://pepy.tech/project/robotframework-jiraissueopener) [![Downloads](https://pepy.tech/badge/robotframework-jiraissueopener/month)](https://pepy.tech/project/robotframework-jiraissueopener/month) ![PyPI](https://img.shields.io/pypi/v/robotframework-jiraissueopener?color=light%20green)
 
-
-
 With the following listener a user can automatically create Jira issues when tests fail. Each failed test will have an individual Jira issue for which 
     assignee, project id and issue type may be modified.
 
@@ -39,7 +37,6 @@ Executed `.robot` file must expose mandatory variables such as:
 
 * ${JIRA_PROJECT}  Jira server api /issue/ url
 * ${JIRA_PROJECT_ID}  your project id. Retrievable from project settings. Example: *11805*
-* ${JIRA_ASSIGNEE}  assignee's username. Example: *agubellini*
 * ${JIRA_ISSUE_TYPE}  `issue_type`: can be found on your jira settings. ([How-to](https://confluence.atlassian.com/jirakb/finding-the-id-for-issue-types-646186508.html)) Example: *10100* 
 
 Example:
@@ -47,7 +44,6 @@ Example:
 ***Variables***
 ${JIRA_PROJECT}     https://jira.myserver.com/rest/api/2/issue/
 ${JIRA_PROJECT_ID}  11888
-${JIRA_ASSIGNEE}    agubellini
 ${JIRA_ISSUE_TYPE}  10100
 ```
 
