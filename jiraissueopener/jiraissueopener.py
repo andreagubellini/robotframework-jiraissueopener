@@ -22,16 +22,14 @@ class jiraissueopener(object):
         self.suite_name = BuiltIn().get_variable_value("${SUITE_NAME}")
         self.project = BuiltIn().get_variable_value("${JIRA_PROJECT}")
         self.project_id = BuiltIn().get_variable_value("${JIRA_PROJECT_ID}")
-        self.assignee = BuiltIn().get_variable_value("${JIRA_ASSIGNEE}")
         self.issue_type = BuiltIn().get_variable_value("${JIRA_ISSUE_TYPE}")
         if result.status != "PASS":
             payload = {
                     "fields":{
-                                "project":  { "id": self.project_id },
                                 "summary": self.suite_name + ": " + result.name + " has failed",
+                                "issuetype":    { "id": self.issue_type },
+                                "project":  { "id": self.project_id }, 
                                 "description": "Error message:" + result.message + "\nDocumentation: " + result.doc,
-                                "assignee": {"name": self.assignee },
-                                "issuetype":    { "id": self.issue_type }
                             }
                 }
             self._send_request(payload)
@@ -53,14 +51,26 @@ class jiraissueopener(object):
 
     def _send_request(self, data):
         headers = {"Content-type": "application/json" }
+        summary = data["fields"]["summary"]
         try:
-            request = requests.post(self.project, data=json.dumps(data), headers=headers, auth=HTTPBasicAuth(self.user, self.password))
-            content = dict(request.json())
-            jira_issue = content["key"]
-            self.jira_issues_list.append(jira_issue)
+            open_issue_count = self._get_issue(summary)
+            if open_issue_count:
+                request = requests.post(self.project, data=json.dumps(data), headers=headers, auth=HTTPBasicAuth(self.user, self.password))
+                content = dict(request.json())
+                jira_issue = content["key"]
+                self.jira_issues_list.append(jira_issue)
         except Exception as e:
-            print(e)
+            LOGGER.error(e)
 
-            
-       
-
+    def _get_issue(self, summary):
+        headers = {"Content-type": "application/json" }
+        project = self.project.rsplit("issue/", 1)
+        params = {
+            "jql": 'project = "RF" AND resolution = Unresolved AND summary ~ "{}"'.format(summary)
+        }
+        request = requests.get(project[0] + "search/", headers=headers, params=params, auth=HTTPBasicAuth(self.user, self.password))
+        resp = dict(request.json())
+        if resp["total"] > 0:
+            return False
+        else:
+            return True
