@@ -6,7 +6,7 @@ import json
 from robot.output import LOGGER
 from robot.output.loggerhelper import Message
 
-class jiraissueopener(object):
+class jiraissueopener:
     """
     With the following listener a user can automatically create Jira issues when tests fail. Each failed test will have an individual Jira issue for which 
     assignee, project id and issue type may be modified.
